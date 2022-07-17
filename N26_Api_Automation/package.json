@@ -1,0 +1,20 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf cypress/results",
+    "cy.report": "generate-mochawesome-report",
+    "cy.open": "npx cypress open --config-file=config.json",
+    "cy.run": "npx cypress run --config-file=config.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cy-api": "^1.4.2",
+    "@cypress/skip-test": "^2.5.0",
+    "cypress": "^9.6.0",
+    "cypress-mochawesome-reporter": "^2.0.1"
+  }
+}

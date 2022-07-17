@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="1"> <!-- status:error mean ONLY show log4j kernel's error log in console-->
+    <Properties>
+        <Property name="APP_LOG_ROOT">./extent_reports/</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} --- %msg%n" />
+        </Console>
+        <RollingFile name="fileLogger" fileName="${APP_LOG_ROOT}/info_log_${date:yyyy-MM-dd-mm-hh-ss}.log" filePattern="${APP_LOG_ROOT}/app-%d{yyyy-MM-dd}.log">
+            <!-- Except Error -->
+            <ThresholdFilter level="error" onMatch="DENY" onMismatch="ACCEPT"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="errorLogger" fileName="${APP_LOG_ROOT}/error_log_${date:yyyy-MM-dd-mm-hh-ss}.log" filePattern="${APP_LOG_ROOT}/error-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="trace" >
+            <AppenderRef ref="Console" level="trace" />
+            <AppenderRef ref="fileLogger" level="info" />
+            <AppenderRef ref="errorLogger" level="error" />
+        </Root>
+    </Loggers>
+</Configuration>

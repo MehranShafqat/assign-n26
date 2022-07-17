@@ -1,0 +1,15 @@
+{
+    "baseUrl": "https://dog.ceo/api",
+    "fullList": "/breeds/list/all",
+    "randomImage": "/breeds/image/random",
+    "byBreed": "/breed/hound/images",
+    "bySubBreed": "/breed/hound/list",
+    "searchRandomBreed": "/breed/african/images/random",
+    "chromeWebSecurity": false,
+    "defaultCommandTimeout": 40000,
+    "requestTimeout": 120000,
+    "responseTimeout": 120000,
+    "pageLoadTimeout": 120000,
+    "video": false,
+    "reporter": "cypress-mochawesome-reporter"
+}
